@@ -1,8 +1,13 @@
 package com.qa.ims.controller;
 
+import com.qa.ims.persistence.domain.Item;
+
 import java.util.List;
 
-public class ItemCONTROLLER implements CrudController{
+public class ItemCONTROLLER implements CrudController<Item>{
+
+
+
     @Override
     public List readAll() {
         return null;
