@@ -3,6 +3,7 @@ package com.qa.ims.persistence.domain;
 import java.util.Objects;
 
 public class Item  {
+
     // keeping variables private for security as items will be linked to customer name
     private long id;
     private String name ;
@@ -23,6 +24,12 @@ public class Item  {
         this.value = value;
         this.quantity = quantity;
     }
+
+    public Item(String nameItem, Double value) {
+        this.nameItem = nameItem;
+        this.value = value;
+    }
+
 
 
     // getters and setters
