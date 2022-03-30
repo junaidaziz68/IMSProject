@@ -43,7 +43,9 @@ public class ItemController implements CrudController<Item> {
         String name = utils.getString();
         LOGGER.info("Please enter a value");
         double value = utils.getDouble();
-        Item item = itemDAO.create(new Item(name, value));
+        LOGGER.info("please enter quantity");
+         int quantity = utils.getDouble().intValue();
+        Item item = itemDAO.create(new Item(name, value,quantity));
         LOGGER.info("Item created");
 
         return item;

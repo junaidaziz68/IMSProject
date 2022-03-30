@@ -6,8 +6,8 @@ public class Item  {
 
     // keeping variables private for security as items will be linked to customer name
     private long id;
-    private String name ;
-    private double value;
+    private String item;
+    private double price ;
     private Integer quantity;
 
 
@@ -18,21 +18,21 @@ public class Item  {
     }
 
 
-    public Item(String name, double value) {
-        this.name = name;
-        this.value = value;
+    public Item(String item, double price) {
+        this.item= item;
+        this.price = price;
     }
 
-    public Item(String name, double value, Integer quantity) {
-        this.name = name;
-        this.value = value;
+    public Item(String item, double price, Integer quantity) {
+        this.item = item;
+        this.price = price;
         this.quantity = quantity;
     }
 
-    public Item(Long id, String name, double value, Integer quantity) {
+    public Item(Long id, String item, double price, Integer quantity) {
         this.id = id;
-        this.name = name;
-        this.value = value;
+        this.item= item;
+        this.price= price;
         this.quantity = quantity;
     }
 
@@ -47,20 +47,20 @@ public class Item  {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getItem() {
+        return item;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setItem(String item) {
+        this.item = item;
     }
 
-    public double getValue() {
-        return value;
+    public double getPrice() {
+        return price;
     }
 
-    public void setValue(double value) {
-        this.value = value;
+    public void setPrice(double price) {
+        this.price = price;
     }
 
     public Integer getQuantity() {
@@ -71,8 +71,8 @@ public class Item  {
     public String toString() {
         return "Item{" +
                 "id=" + id +
-                ", name='" + name + '\'' +
-                ", value=" + value +
+                ", item='" + item + '\'' +
+                ", price=" + price +
                 ", quantity=" + quantity +
                 '}';
     }
@@ -83,12 +83,12 @@ public class Item  {
         if (o == null || getClass() != o.getClass())
             return false;
         Item item = (Item) o;
-        return id == item.id && Double.compare(item.value, value) == 0 && Objects.equals(name, item.name) && Objects.equals(quantity, item.quantity);
+        return id == item.id && Double.compare(item.price, price) == 0 && Objects.equals(item, item.item) && Objects.equals(quantity, item.quantity);
     }
 // added hash for hash-mapping
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, value, quantity);
+        return Objects.hash(id, item, price, quantity);
     }
 
     public void setQuantity(Integer quantity) {

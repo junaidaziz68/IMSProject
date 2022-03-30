@@ -20,9 +20,10 @@ import java.util.List;
     @Override
     public Item modelFromResultSet(ResultSet resultSet) throws SQLException {
         Long id = resultSet.getLong("id");
-        String name = resultSet.getString("name");
-        double value = resultSet.getDouble("value");
-        return new Item(id, name, value, null);
+        String item = resultSet.getString("item");
+        double price = resultSet.getDouble("price");
+        int quantity = resultSet.getInt("quantity");
+        return new Item(id, item, price,quantity);
     }
 
     /**
@@ -74,8 +75,8 @@ import java.util.List;
     public Item create(Item item) {
         try (Connection connection = DBUtils.getInstance().getConnection();
              Statement statement = connection.createStatement();) {
-            statement.executeUpdate("INSERT INTO items(name, value) values('" + item.getName()
-                    + "','" + item.getValue() + "')");
+            statement.executeUpdate("INSERT INTO items(item, price,quantity) values('" + item.getItem()
+                    + "','" + item.getPrice() + "', '" + item.getQuantity() + "')");
             return readLatest();
         } catch (Exception e) {
             LOGGER.debug(e);
@@ -109,8 +110,8 @@ import java.util.List;
     public Item update(Item item) {
         try (Connection connection = DBUtils.getInstance().getConnection();
              Statement statement = connection.createStatement();) {
-            statement.executeUpdate("update items set name ='" + item.getName() + "', value ='"
-                    + item.getValue() + "' where id =" + item.getId());
+            statement.executeUpdate("update items set name ='" + item.getItem() + "', value ='"
+                    + item.getPrice() + "' where id =" + item.getId());
             return readItem(item.getId());
         } catch (Exception e) {
             LOGGER.debug(e);
