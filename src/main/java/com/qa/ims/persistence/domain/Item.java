@@ -18,16 +18,22 @@ public class Item  {
     }
 
 
-    public Item(long id, String name, double value, Integer quantity) {
-        this.id = id;
+    public Item(String name, double value) {
+        this.name = name;
+        this.value = value;
+    }
+
+    public Item(String name, double value, Integer quantity) {
         this.name = name;
         this.value = value;
         this.quantity = quantity;
     }
 
-    public Item(String nameItem, Double value) {
-        this.nameItem = nameItem;
+    public Item(Long id, String name, double value, Integer quantity) {
+        this.id = id;
+        this.name = name;
         this.value = value;
+        this.quantity = quantity;
     }
 
 
