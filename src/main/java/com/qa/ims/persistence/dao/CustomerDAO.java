@@ -8,6 +8,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.qa.ims.persistence.domain.Item;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -24,6 +25,11 @@ public class CustomerDAO implements Dao<Customer> {
 		String firstName = resultSet.getString("first_name");
 		String surname = resultSet.getString("surname");
 		return new Customer(id, firstName, surname);
+	}
+
+	@Override
+	public Item readItem(Long item_id) {
+		return null;
 	}
 
 	/**

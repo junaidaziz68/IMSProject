@@ -1,12 +1,14 @@
 package com.qa.ims.persistence.dao;
 
+import com.qa.ims.persistence.domain.Item;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
 public interface Dao<T> {
 
-	List<T> readAll();
+	List<T>readAll();
 	
 	T read(Long id);
 
@@ -17,4 +19,6 @@ public interface Dao<T> {
 	int delete(long id);
 
 	T modelFromResultSet(ResultSet resultSet) throws SQLException;
+
+    Item readItem(Long item_id);
 }
