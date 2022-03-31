@@ -6,7 +6,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 public class Utils {
-	
+
 	private static final Logger LOGGER = LogManager.getLogger();
 
 	private final Scanner scanner;
@@ -52,4 +52,34 @@ public class Utils {
 		return doubleInput;
 	}
 
-}
+	public Integer getInt() {
+		Integer intInput = null;
+		do {
+			String input = getString();
+			try {
+				intInput = Integer.parseInt(input);
+			} catch (NumberFormatException nfe) {
+				LOGGER.info("Error - Please enter a number");
+			}
+		} while (intInput == null);
+		return intInput;
+	}
+
+    public Object getOrderItemAction() {
+
+		Integer intInput = null;
+		do {
+			String input = getString();
+			try {
+				intInput = Integer.parseInt(input);
+			} catch (NumberFormatException nfe) {
+				LOGGER.info("Error - Please enter a number");
+			}
+		} while (intInput == null);
+		return intInput;
+	}
+
+    }
+
+
+
