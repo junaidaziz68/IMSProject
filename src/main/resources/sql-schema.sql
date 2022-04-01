@@ -14,7 +14,6 @@ CREATE TABLE IF NOT EXISTS `ims`.`items` (
     `item_id` INT NOT NULL AUTO_INCREMENT,
     `item` VARCHAR(40) DEFAULT NULL,
     `price` DECIMAL(5,2) DEFAULT NULL,
-    `quantity` INT,
      PRIMARY KEY (`item_id`)
 );
 

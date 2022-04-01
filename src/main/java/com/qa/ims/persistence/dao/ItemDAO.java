@@ -19,8 +19,7 @@ import java.util.List;
         Long id = resultSet.getLong("id");
         String item = resultSet.getString("item");
         double price = resultSet.getDouble("price");
-        int quantity = resultSet.getInt("quantity");
-        return new Item(id, item, price,quantity);
+        return new Item(id, item, price);
     }
 
     @Override
@@ -77,10 +76,9 @@ import java.util.List;
      public Item create(Item item) {
          try (Connection connection = DBUtils.getInstance().getConnection();
               PreparedStatement statement = connection
-                      .prepareStatement("INSERT INTO items(item, price, quantity) VALUES (?,?, ?)");) {
+                      .prepareStatement("INSERT INTO items(item, price) VALUES (?,?)");) {
              statement.setString(1, item.getItem());
              statement.setDouble(2, item.getPrice());
-             statement.setInt(2, item.getQuantity());
              statement.executeUpdate();
              return readLatest();
          } catch (Exception e) {
@@ -117,7 +115,7 @@ import java.util.List;
     public Item update(Item item) {
         try (Connection connection = DBUtils.getInstance().getConnection();
              Statement statement = connection.createStatement();) {
-            statement.executeUpdate("update items set item ='" + item.getItem() + "', price ='" + item.getPrice() + "', quantity ='" + item.getQuantity() + "'  where id =" + item.getId());
+            statement.executeUpdate("update items set item ='" + item.getItem() + "', price ='" + item.getPrice() + "'  where id =" + item.getId());
             return readItem(item.getId());
         } catch (Exception e) {
             LOGGER.debug(e);

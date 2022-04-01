@@ -30,7 +30,7 @@ public class DBUtils {
 		} catch (Exception e) {
 			LOGGER.error(e);
 		}
-		this.dbUrl = dbProps.getProperty("db.url", "jdbc:mysql://localhost:3306/ims");
+		this.dbUrl = dbProps.getProperty("db.url", "jdbc:mysql://localhost:3306/ims?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC");
 		this.dbUser = dbProps.getProperty("db.user", "root");
 		this.dbPassword = dbProps.getProperty("db.password", "Kashmir@123");
 	}
@@ -80,6 +80,7 @@ public class DBUtils {
 		return instance;
 	}
 
+
 	public static DBUtils connect(String properties) {
 		instance = new DBUtils(properties);
 		return instance;
@@ -91,5 +92,6 @@ public class DBUtils {
 		}
 		return instance;
 	}
+
 
 }
