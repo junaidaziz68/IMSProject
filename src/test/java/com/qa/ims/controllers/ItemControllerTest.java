@@ -34,7 +34,7 @@ import static org.junit.Assert.assertEquals;
 
             final String name = "banana";
             final double price = 1.2;
-            final int quantity  = 2;
+        
 
             final Item created = new Item(name, price);
 

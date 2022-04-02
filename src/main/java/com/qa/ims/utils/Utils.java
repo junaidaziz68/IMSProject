@@ -66,18 +66,24 @@ public class Utils {
 		return intInput;
 	}
 
-    public Integer getOrderItemAction() {
+    public Long getOrderItemAction() {
 
-		Integer intInput = null;
+		Long Input = null;
 		do {
 			String input = getString();
-			try {
-				intInput = Integer.parseInt(input);
-			} catch (NumberFormatException nfe) {
-				LOGGER.info("Error - Please enter a number");
+			if(input.equals("q")) {
+				break;
 			}
-		} while (intInput == null);
-		return intInput;
+			else {
+				try {
+					Input = Long.parseLong(input);
+				} catch (Exception e) {
+					LOGGER.info("Error - Please enter a number");
+				}
+			}
+
+		} while (Input == null);
+		return Input;
 	}
 
     }

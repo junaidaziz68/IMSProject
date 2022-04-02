@@ -15,22 +15,35 @@ import java.util.List;
 
 // print the receipt
 // make it so I can add multiple items
-//calm
+
 
 public class OrderDAO implements Dao<Order> {
 
 
     public static final Logger LOGGER = LogManager.getLogger();
 
-    @Override
-    public Order modelFromResultSet(ResultSet resultSet) throws SQLException {
-        Long id = resultSet.getLong("id");
-        Long customer_id = resultSet.getLong("customer_id");
-        Long item_id = resultSet.getLong("item_id");
-        int quantity = resultSet.getInt("quantity");
-        Double cost = resultSet.getDouble("cost");
-        return new Order(id, customer_id, item_id, quantity, cost);
+   
+	@Override
+	public Order modelFromResultSet(ResultSet resultSet) throws SQLException {
+		Long id = resultSet.getLong("id");
+		Long customer_id = resultSet.getLong("customer_id");
+		ArrayList<Item> items = getItems(id);
+		return new Order(id, customer_id, items);
+	}
+
+    private ArrayList<Item> getItems(Long id) {
+
+        return new ArrayList<>();
+
     }
+
+
+    public Item modelFromResultSetItem(ResultSet resultSet) throws SQLException {
+		Long id = resultSet.getLong("id");
+		String item = resultSet.getString("item");
+		Double price = resultSet.getDouble("price");
+        return new Item(id, item, price);
+	}
 
     @Override
     public Item readItem(Long item_id) {
@@ -62,6 +75,7 @@ public class OrderDAO implements Dao<Order> {
         return null;
     }
 
+
     public Order readLatest() {
         try (Connection connection = DBUtils.getInstance().getConnection();
              Statement statement = connection.createStatement();
@@ -83,7 +97,7 @@ public class OrderDAO implements Dao<Order> {
     public Order create(Order order) {
         try (Connection connection = DBUtils.getInstance().getConnection();
              Statement statement = connection.createStatement()) {
-            statement.executeUpdate("INSERT INTO orders(customer_id) values('" + order.getCustomer_id() + "'");
+            statement.executeUpdate("INSERT INTO orders(customer_id) values('" + order.getCustomer_id() + "')");
             return readLatest();
         } catch (Exception e) {
             LOGGER.debug(e);
@@ -95,7 +109,7 @@ public class OrderDAO implements Dao<Order> {
     public Order readOrder(Long id) {
         try (Connection connection = DBUtils.getInstance().getConnection();
              Statement statement = connection.createStatement();
-             ResultSet resultSet = statement.executeQuery("SELECT * FROM items where id = " + id);) {
+             ResultSet resultSet = statement.executeQuery("SELECT * FROM orders where id = " + id);) {
             if (resultSet.next()) {
                 return modelFromResultSet(resultSet);
             }
@@ -113,7 +127,7 @@ public class OrderDAO implements Dao<Order> {
     public Order update(Order order) {
         try (Connection connection = DBUtils.getInstance().getConnection();
              Statement statement = connection.createStatement();) {
-            statement.executeUpdate("");
+            statement.executeUpdate("UPDATE ORDERS SET customer_id ='" + order.getCustomer_id() + "' where id ='" + order.getId());
             return readOrder(order.getId());
         } catch (Exception e) {
             LOGGER.debug(e);
@@ -127,7 +141,7 @@ public class OrderDAO implements Dao<Order> {
     public int delete(long id) {
         try (Connection connection = DBUtils.getInstance().getConnection();
              Statement statement = connection.createStatement();) {
-            return statement.executeUpdate("DELETE orders, order_items FROM orders INNER JOIN order_items WHERE orders.id=order_items.order_id AND orders.id =  " + id);
+            return statement.executeUpdate("DELETE FROM orders WHERE ID orders.id =  " + id);
         } catch (Exception e) {
             LOGGER.debug(e);
             LOGGER.error(e.getMessage());
@@ -135,11 +149,11 @@ public class OrderDAO implements Dao<Order> {
         return 0;
     }
 
-
-    public Order order(Order order) {
+    // creating item in item_order table
+    public Order Create_orderItem(Order order, long item_id) {
         try (Connection connection = DBUtils.getInstance().getConnection();
              Statement statement = connection.createStatement();) {
-            statement.executeUpdate("INSERT INTO order_items(order_id, item_id, quantity) values('" + order.getId() + "','" + order.getItem_id() + "','" + order.getQuantity() + "');");
+            statement.executeUpdate("INSERT INTO order_items(order_id, item_id) values('" + order.getId() + "','" + item_id +"');");
             return readLatest();
         } catch (Exception e) {
             LOGGER.debug(e);
@@ -148,4 +162,47 @@ public class OrderDAO implements Dao<Order> {
         return order;
 
     }
+    // Delete from order_item table
+
+    public Order Delete_orderItem(Order order, long item_id) {
+		try (Connection connection = DBUtils.getInstance().getConnection();
+				Statement statement = connection.createStatement();) {
+			statement.executeUpdate("DELETE FROM order_items WHERE order_items.order_id = " + order.getId() + " AND order_items.item_id = " + item_id + ";");
+		    return readLatest();
+        } catch (Exception e) {
+            LOGGER.debug(e);
+            LOGGER.error(e.getMessage());
+        }
+        return order; 
+
+
+	}
+
+    public ArrayList<Item> ItemList(Long id) {
+		try (Connection connection = DBUtils.getInstance().getConnection();
+				Statement statement = connection.createStatement();
+				ResultSet resultSet = statement.executeQuery(""
+						+ "SELECT items.id, items.name, items.value, order_items.quantity\r\n"
+						+ "FROM order_items\r\n"
+						+ "INNER JOIN items ON \r\n"
+						+ "	order_items.item_id=items.id\r\n"
+						+ "    AND order_id = "+ id +";"
+						);) {
+			ArrayList<Item> items = new ArrayList<>();
+			while (resultSet.next()) {
+				items.add(modelFromResultSetItem(resultSet));
+			}
+			return items;
+		} catch (SQLException e) {
+			LOGGER.debug(e);
+			LOGGER.error(e.getMessage());
+		}
+		return new ArrayList<>();
+
+
+
+
+
+
+}
 }
