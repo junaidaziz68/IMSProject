@@ -1,7 +1,11 @@
-Coverage: 34%
+Coverage: 80%
 # Project Title
+Project goal is to build a inventory management system with crud functionality in the CLI using technologies like 
 
-One Paragraph of project description goes here
+Java
+Maven
+JUnit
+MySQL
 
 ## Getting Started
 
@@ -11,58 +15,26 @@ These instructions will get you a copy of the project up and running on your loc
 
 What things you need to install the software and how to install them
 
-```
-Give examples
-```
+IDE - Eclipse (https://www.eclipse.org/downloads/)
+JAVA - Java SE Development Kit (https://www.oracle.com/uk/java/technologies/javase/javase-jdk8-downloads.html)
+Database - MySQL (https://dev.mysql.com/downloads/mysql/5.7.html)
+Maven - Apache Maven (https://maven.apache.org/download.cgi?Preferred=ftp://ftp.osuosl.org/pub/apache/)
 
 ### Installing
 
-A step by step series of examples that tell you how to get a development env running
+HOW TO RUN THE APP:
+After setting up JAVA, you need to create a database on your local MySQL server on your machine.
+Follow the following steps
+1. Open MySQL Workbench
+2. Use local database instance and enter your username and pasword
+3. Type "CREATE DATABASE ims;"
 
-Say what the step will be
+To run the system navigate to the directory where the pom.xml file is located.
+Then run the command:"mvn clean package"
 
-```
-Give the example
-```
-
-And repeat
-
-```
-until finished
-```
-
-End with an example of getting some data out of the system or using it for a little demo
-
-## Running the tests
-
-Explain how to run the automated tests for this system. Break down into which tests and what they do
-
-### Unit Tests 
-
-Explain what these tests test, why and how to run them
-
-```
-Give an example
-```
-
-### Integration Tests 
-Explain what these tests test, why and how to run them
-
-```
-Give an example
-```
-
-### And coding style tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-## Deployment
-
-Add additional notes about how to deploy this on a live system
+This  creates  a directory  which  contains a jar file.
+Then run the jar file by navigating to target file and run the command:
+"java -jar ims-jar-with-dependencies.jar"
 
 ## Built With
 
