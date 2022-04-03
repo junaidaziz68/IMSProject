@@ -1,10 +1,9 @@
 package com.qa.ims.utils;
 
-import java.util.Scanner;
-
-import com.qa.ims.persistence.domain.Order;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+
+import java.util.Scanner;
 
 public class Utils {
 

@@ -13,6 +13,8 @@ public class Order {
 
 
 
+
+
     public Order(ArrayList<Item> items) {
         this.items = items;
     }
@@ -66,12 +68,12 @@ public class Order {
         return t;
 
     }
-    public void settCost(double cost) {
+    public void setCost (double cost) {
         this.cost = cost;
     }
 
 
-    public double gettCost() {
+    public double getCost() {
         return cost;
     }
 
