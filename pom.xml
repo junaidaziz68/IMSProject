@@ -15,44 +15,200 @@
 		<dependency>
 			<groupId>nl.jqno.equalsverifier</groupId>
 			<artifactId>equalsverifier</artifactId>
-			<version>3.4.1</version>
+			<version>3.10</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>com.h2database</groupId>
 			<artifactId>h2</artifactId>
-			<version>1.4.200</version>
+			<version>2.1.210</version>
 			<scope>test</scope>
 		</dependency>
 		<!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
-			<version>8.0.19</version>
+			<version>8.0.28</version>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.logging.log4j</groupId>
 			<artifactId>log4j-core</artifactId>
-			<version>2.13.3</version>
+			<version>2.17.1</version>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.logging.log4j</groupId>
 			<artifactId>log4j-api</artifactId>
-			<version>2.13.3</version>
+			<version>2.17.1</version>
 		</dependency>
 		<!-- https://mvnrepository.com/artifact/org.mockito/mockito-core -->
 		<dependency>
 			<groupId>org.mockito</groupId>
 			<artifactId>mockito-core</artifactId>
-			<version>3.7.7</version>
+			<version>4.3.1</version>
 			<scope>test</scope>
 		</dependency>
 		<!-- https://mvnrepository.com/artifact/junit/junit -->
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
-			<version>4.13.1</version>
+			<version>4.13.2</version>
 			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.maven.plugins</groupId>
+			<artifactId>maven-deploy-plugin</artifactId>
+			<version>3.0.0-M1</version>
+			<type>maven-plugin</type>
+		</dependency>
+		<dependency>
+			<groupId>com.google.guava</groupId>
+			<artifactId>guava</artifactId>
+			<version>31.1-jre</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.google.code.findbugs</groupId>
+			<artifactId>jsr305</artifactId>
+			<version>3.0.2</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.google.code.gson</groupId>
+			<artifactId>gson</artifactId>
+			<version>2.9.0</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.github.qa-automation-utils</groupId>
+			<artifactId>java-utils</artifactId>
+			<version>1.0.6</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.ifesdjeen.utils</groupId>
+			<artifactId>com.ifesdjeen.utils</artifactId>
+			<version>0.1.0</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.android.support</groupId>
+			<artifactId>appcompat-v7</artifactId>
+			<version>28.0.0</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.android.support</groupId>
+			<artifactId>support-v4</artifactId>
+			<version>28.0.0</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.nikpappas.utils</groupId>
+			<artifactId>utils</artifactId>
+			<version>1.0.1</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.xzchaoo.utils</groupId>
+			<artifactId>utils</artifactId>
+			<version>2.0.6</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.sibilantsolutions.utils</groupId>
+			<artifactId>utils</artifactId>
+			<version>0.0.1</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.expanset.utils</groupId>
+			<artifactId>utils</artifactId>
+			<version>1.0.1</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.jd.utils</groupId>
+			<artifactId>utils</artifactId>
+			<version>2.2.2.RELEASE</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>om-utils</groupId>
+			<artifactId>om-utils</artifactId>
+			<version>0.5.0</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>io.github.blazmrak.utils</groupId>
+			<artifactId>utils-bom</artifactId>
+			<version>0.1.0</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>advent-utils</groupId>
+			<artifactId>advent-utils</artifactId>
+			<version>0.1.4</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>zeekat-utils</groupId>
+			<artifactId>zeekat-utils</artifactId>
+			<version>0.1.2</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>missing-utils</groupId>
+			<artifactId>missing-utils</artifactId>
+			<version>0.1.5</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>aerial.utils</groupId>
+			<artifactId>aerial.utils</artifactId>
+			<version>1.2.0</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>reagent-utils</groupId>
+			<artifactId>reagent-utils</artifactId>
+			<version>0.3.4</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>komcrad-utils</groupId>
+			<artifactId>komcrad-utils</artifactId>
+			<version>0.12.1</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>arohner-utils</groupId>
+			<artifactId>arohner-utils</artifactId>
+			<version>0.0.3</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>asosio-utils</groupId>
+			<artifactId>asosio-utils</artifactId>
+			<version>0.0.1</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>corpus-utils</groupId>
+			<artifactId>corpus-utils</artifactId>
+			<version>0.3.8</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>lrn-utils</groupId>
+			<artifactId>lrn-utils</artifactId>
+			<version>0.1.14</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>linux-utils</groupId>
+			<artifactId>linux-utils</artifactId>
+			<version>1.0.6</version>
+			<scope>compile</scope>
 		</dependency>
 	</dependencies>
 
@@ -139,7 +295,18 @@
 			</plugin>
 		</plugins>
 	</build>
-
+	<repositories>
+		<repository>
+			<id>clojars</id>
+			<name>Clojars</name>
+			<url>https://repo.clojars.org/</url>
+		</repository>
+		<repository>
+			<id>gmaven</id>
+			<name>Google Maven</name>
+			<url>https://maven.google.com/</url>
+		</repository>
+	</repositories>
 
 
 </project>

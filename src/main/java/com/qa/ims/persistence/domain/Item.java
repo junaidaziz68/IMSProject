@@ -5,41 +5,24 @@ import java.util.Objects;
 public class Item  {
 
     // keeping variables private for security as items will be linked to customer name
-    private long id;
+    private Long id;
     private String item;
     private double price ;
-    private Integer quantity;
-
-
-
-    public Item()  {
-
-
-    }
-
 
     public Item(String item, double price) {
-        this.item= item;
-        this.price = price;
+        this.setItem(item);
+        this.setPrice(price);
     }
 
-    public Item(String item, double price, Integer quantity) {
-        this.item = item;
-        this.price = price;
-        this.quantity = quantity;
+    public Item(Long id, String item, double price) {
+        this.setId(id);
+        this.setItem(item);
+        this.setPrice(price);
+
     }
-
-    public Item(Long id, String item, double price, Integer quantity) {
-        this.id = id;
-        this.item= item;
-        this.price= price;
-        this.quantity = quantity;
-    }
-
-
 
     // getters and setters
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
@@ -63,18 +46,14 @@ public class Item  {
         this.price = price;
     }
 
-    public Integer getQuantity() {
-        return quantity;
-    }
-
     @Override
     public String toString() {
-        return "Item{" +
-                "id=" + id +
-                ", item='" + item + '\'' +
-                ", price=" + price +
-                ", quantity=" + quantity +
-                '}';
+        return "id:" + id + " item:" + item + " price:" + price;}
+
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, item, price);
     }
 
     @Override
@@ -83,21 +62,8 @@ public class Item  {
         if (o == null || getClass() != o.getClass())
             return false;
         Item item = (Item) o;
-        return id == item.id && Double.compare(item.price, price) == 0 && Objects.equals(item, item.item) && Objects.equals(quantity, item.quantity);
-    }
+        return id == item.id && Double.compare(item.price, price) == 0 && Objects.equals(item, item.item);
 // added hash for hash-mapping
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, item, price, quantity);
-    }
-
-    public void setQuantity(Integer quantity) {
-        this.quantity = quantity;
-
-
-
-
-
 
 
     }
