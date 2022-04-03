@@ -10,8 +10,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-// print the receipt
-// make it so I can add multiple items
+
 
 
 public class OrderDAO implements Dao<Order> {
@@ -184,28 +183,5 @@ public class OrderDAO implements Dao<Order> {
 
 	}
 
-    public ArrayList<Item> ItemList(Long id) {
-        try (Connection connection = DBUtils.getInstance().getConnection();
-             Statement statement = connection.createStatement();
-             ResultSet resultSet = statement.executeQuery(""
-                     + "SELECT items.id, items.name, items.value, order_items.quantity\r\n"
-                     + "FROM order_items\r\n"
-                     + "INNER JOIN items ON \r\n"
-                     + "	order_items.item_id=items.id\r\n"
-                     + "    AND order_id = " + id + ";"
-             );) {
-            ArrayList<Item> items = new ArrayList<>();
-            while (resultSet.next()) {
-                items.add(modelFromResultSetItem(resultSet));
-            }
-            return items;
-        } catch (SQLException e) {
-            LOGGER.debug(e);
-            LOGGER.error(e.getMessage());
-        }
-        return new ArrayList<>();
-
-
-    }
 
 }
